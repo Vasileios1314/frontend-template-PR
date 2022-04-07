@@ -1,4 +1,4 @@
-import { apiUrl } from "../../config/constants";
+import { API_URL } from "../../config/constants";
 import axios from "axios";
 import { selectToken } from "./selectors";
 import {
@@ -30,7 +30,7 @@ export const signUp = (name, email, password) => {
   return async (dispatch, getState) => {
     dispatch(appLoading());
     try {
-      const response = await axios.post(`${apiUrl}/auth/signup`, {
+      const response = await axios.post(`${API_URL}/auth/signup`, {
         name,
         email,
         password,
@@ -56,7 +56,7 @@ export const login = (email, password) => {
   return async (dispatch, getState) => {
     dispatch(appLoading());
     try {
-      const response = await axios.post(`${apiUrl}/auth/login`, {
+      const response = await axios.post(`${API_URL}/auth/login`, {
         email,
         password,
       });
@@ -89,7 +89,7 @@ export const getUserWithStoredToken = () => {
     try {
       // if we do have a token,
       // check wether it is still valid or if it is expired
-      const response = await axios.get(`${apiUrl}/auth/me`, {
+      const response = await axios.get(`${API_URL}/auth/me`, {
         headers: { Authorization: `Bearer ${token}` },
       });
 
